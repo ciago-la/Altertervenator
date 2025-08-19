@@ -1,1 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Altervenator</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="theme-color" content="#0b1020">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header / HUD -->
+    <header class="hud">
+      <div class="hud__left">
+        <img src="logo.png" alt="logo" class="logo" onerror="this.style.display='none'">
+        <h1>ALTERVENATOR</h1>
+      </div>
+      <div class="hud__right">
+        <div class="playerline">
+          <span id="playerName"></span> ·
+          <span id="playerLevel"></span>
+          <span id="playerCoins" class="badge badge--coin"></span>
+        </div>
+        <div class="bars">
+          <div class="bar">
+            <label>XP</label>
+            <div class="bar__track"><div id="xpBar" class="bar__fill"></div></div>
+            <small id="xpText"></small>
+          </div>
+          <div class="bar">
+            <label>XP Clase</label>
+            <div class="bar__track"><div id="classXpBar" class="bar__fill bar__fill--alt"></div></div>
+            <small id="classXpText"></small>
+          </div>
+        </div>
+      </div>
+    </header>
 
+    <!-- Contenido -->
+    <main id="view"></main>
+
+    <!-- Tabs -->
+    <nav class="tabs">
+      <button data-route="#/misiones" class="tab is-active">Misiones</button>
+      <button data-route="#/tienda" class="tab">Tienda</button>
+      <button data-route="#/inventario" class="tab">Inventario</button>
+      <button data-route="#/clases" class="tab">Clases</button>
+      <button data-route="#/perfil" class="tab">Perfil</button>
+    </nav>
+  </div>
+
+  <!-- Modal / Toasts -->
+  <div id="modalRoot" class="modalRoot" aria-hidden="true"></div>
+  <div id="toastRoot" class="toastRoot"></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
