@@ -1,61 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Altervenator — Misiones</title>
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icon-192.png">
-  <link rel="stylesheet" href="styles.css">
-  <meta name="theme-color" content="#0a1020">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Altervenator</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#0a1226" />
 </head>
 <body>
-  <div id="app">
-    <!-- HUD -->
-    <header class="hud">
-      <div class="hud__left">
-        <img class="logo" src="assets/logo.png" alt="logo" onerror="this.style.display='none'">
-        <div>
-          <h3 style="margin:0">ALTERVENATOR</h3>
-          <div class="playerline">
-            <span id="playerName" class="badge">Jugador</span>
-            <span id="playerLevel" class="badge">Lvl 1</span>
-            <span id="playerCoins" class="badge badge--coin">🪙 0</span>
-          </div>
-          <div class="bars">
-            <div class="bar">
-              <label>XP</label>
-              <div class="bar__track"><div id="xpBar" class="bar__fill"></div></div>
-              <small id="xpText">0/200</small>
-            </div>
-            <div class="bar">
-              <label>XP Clase</label>
-              <div class="bar__track"><div id="classXpBar" class="bar__fill bar__fill--alt"></div></div>
-              <small id="classXpText">0/200</small>
-            </div>
-          </div>
-        </div>
+  <!-- HUD superior -->
+  <header class="hud">
+    <div class="hud__left">
+      <span id="playerName">Jugador</span>
+      <span id="playerLevel">Lvl 1</span>
+      <span id="playerCoins">🪙 0</span>
+    </div>
+    <div class="hud__bars">
+      <div class="bar">
+        <div id="xpBar" class="bar__fill"></div>
       </div>
-    </header>
+      <small id="xpText">0 / 200</small>
+      <div class="bar bar--class">
+        <div id="classXpBar" class="bar__fill"></div>
+      </div>
+      <small id="classXpText">0 / 200</small>
+    </div>
+  </header>
 
-    <!-- Vistas -->
-    <main id="view"></main>
+  <!-- Vista dinámica -->
+  <main id="view" class="view"></main>
 
-    <!-- Barra fija de tabs -->
-    <nav class="tabs">
-      <button class="tab is-active" data-route="#/misiones">Misiones</button>
-      <button class="tab" data-route="#/tienda">Tienda</button>
-      <button class="tab" data-route="#/inventario">Inventario</button>
-      <button class="tab" data-route="#/clases">Clases</button>
-      <button class="tab" data-route="#/perfil">Perfil</button>
-    </nav>
-  </div>
+  <!-- Menú fijo abajo -->
+  <nav class="tabs">
+    <button class="tab" data-route="#/misiones">
+      <img src="/assets/misiones.png" alt="" class="tab__icon" />
+      <span>Misiones</span>
+    </button>
+    <button class="tab" data-route="#/tienda">
+      <img src="/assets/tienda.png" alt="" class="tab__icon" />
+      <span>Tienda</span>
+    </button>
+    <button class="tab" data-route="#/inventario">
+      <img src="/assets/inventario.png" alt="" class="tab__icon" />
+      <span>Inventario</span>
+    </button>
+    <button class="tab" data-route="#/clases">
+      <img src="/assets/clases.png" alt="" class="tab__icon" />
+      <span>Clases</span>
+    </button>
+    <button class="tab" data-route="#/perfil">
+      <img src="/assets/perfil.png" alt="" class="tab__icon" />
+      <span>Perfil</span>
+    </button>
+  </nav>
 
-  <!-- Contenedores de notificaciones (importante la clase!) -->
-  <div id="modalRoot" class="modalRoot"></div>
-  <div id="toastRoot" class="toastRoot"></div>
+  <!-- Contenedor de modales -->
+  <div id="modalRoot" class="modal-root"></div>
 
-  <!-- App -->
+  <!-- Contenedor de toasts -->
+  <div id="toastRoot" class="toast-root"></div>
+
+  <!-- Scripts -->
   <script src="app.js"></script>
 </body>
 </html>
