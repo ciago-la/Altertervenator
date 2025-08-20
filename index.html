@@ -1,61 +1,61 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Altervenator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Altervenator — Misiones</title>
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icon-192.png" sizes="192x192">
-  <link rel="apple-touch-icon" href="icon-192.png">
-  <meta name="theme-color" content="#0b1020">
+  <link rel="icon" href="icon-192.png">
   <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#0a1020">
 </head>
 <body>
   <div id="app">
-    <!-- Header / HUD -->
+    <!-- HUD -->
     <header class="hud">
       <div class="hud__left">
-        <img src="logo.png" alt="logo" class="logo" onerror="this.style.display='none'">
-        <h1>ALTERVENATOR</h1>
-      </div>
-      <div class="hud__right">
-        <div class="playerline">
-          <span id="playerName"></span> ·
-          <span id="playerLevel"></span>
-          <span id="playerCoins" class="badge badge--coin"></span>
-        </div>
-        <div class="bars">
-          <div class="bar">
-            <label>XP</label>
-            <div class="bar__track"><div id="xpBar" class="bar__fill"></div></div>
-            <small id="xpText"></small>
+        <img class="logo" src="assets/logo.png" alt="logo" onerror="this.style.display='none'">
+        <div>
+          <h3 style="margin:0">ALTERVENATOR</h3>
+          <div class="playerline">
+            <span id="playerName" class="badge">Jugador</span>
+            <span id="playerLevel" class="badge">Lvl 1</span>
+            <span id="playerCoins" class="badge badge--coin">🪙 0</span>
           </div>
-          <div class="bar">
-            <label>XP Clase</label>
-            <div class="bar__track"><div id="classXpBar" class="bar__fill bar__fill--alt"></div></div>
-            <small id="classXpText"></small>
+          <div class="bars">
+            <div class="bar">
+              <label>XP</label>
+              <div class="bar__track"><div id="xpBar" class="bar__fill"></div></div>
+              <small id="xpText">0/200</small>
+            </div>
+            <div class="bar">
+              <label>XP Clase</label>
+              <div class="bar__track"><div id="classXpBar" class="bar__fill bar__fill--alt"></div></div>
+              <small id="classXpText">0/200</small>
+            </div>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Contenido -->
+    <!-- Vistas -->
     <main id="view"></main>
 
-    <!-- Tabs -->
+    <!-- Barra fija de tabs -->
     <nav class="tabs">
-      <button data-route="#/misiones" class="tab is-active">Misiones</button>
-      <button data-route="#/tienda" class="tab">Tienda</button>
-      <button data-route="#/inventario" class="tab">Inventario</button>
-      <button data-route="#/clases" class="tab">Clases</button>
-      <button data-route="#/perfil" class="tab">Perfil</button>
+      <button class="tab is-active" data-route="#/misiones">Misiones</button>
+      <button class="tab" data-route="#/tienda">Tienda</button>
+      <button class="tab" data-route="#/inventario">Inventario</button>
+      <button class="tab" data-route="#/clases">Clases</button>
+      <button class="tab" data-route="#/perfil">Perfil</button>
     </nav>
   </div>
 
-  <!-- Modal / Toasts -->
-  <div id="modalRoot" class="modalRoot" aria-hidden="true"></div>
+  <!-- Contenedores de notificaciones (importante la clase!) -->
+  <div id="modalRoot" class="modalRoot"></div>
   <div id="toastRoot" class="toastRoot"></div>
 
-  <script type="module" src="app.js"></script>
+  <!-- App -->
+  <script src="app.js"></script>
 </body>
 </html>
