@@ -40,7 +40,7 @@ const I = {
 /* ====== Core / State / Utils (igual de robusto que V2.1) ====== */
 const Core=(()=>{const l=new Map();const on=(e,f)=>{if(!l.has(e))l.set(e,new Set());l.get(e).add(f);return()=>l.get(e)?.delete(f)};const emit=(e,p)=>l.get(e)?.forEach(f=>f(p));
 const KEY='altervenator:v2';const save=p=>{const c=JSON.parse(localStorage.getItem(KEY)||'{}');localStorage.setItem(KEY,JSON.stringify({...c,...p}))};const load=()=>JSON.parse(localStorage.getItem(KEY)||'{}');
-let t=null;const startTick=()=>{if(t)return;t=setInterval(()=>emit('tick:1s'),1000)};const Config={XP_BASE:200,XP_CLASS_BASE:200,XP_GROWTH:1.10,NERF_EXP_STEP:0.20,NERF_MAX_STACKS:3,BUFF_EXP_BONUS:0.20,BUFF_TIME_MIN:30,FOCUS_TIMER_H:8,CLASS_TIMER_H:12,RAID_TIMER_H:7,HARD_VERSION_H:6,DAILY_GENERATE_HOUR:0,DAILY_DEADLINE_HOUR:23,MAX_FOCUS_PER_DAY:2,MAX_CLASS_PER_DAY:2};
+let t=null;const startTick=()=>{if(t)return;t=setInterval(()=>emit('tick:1s'),1000)};const Config={XP_BASE:200,XP_CLASS_BASE:200,XP_GROWTH:1.10,NERF_EXP_STEP:0.20,NERF_MAX_STACKS:9,BUFF_EXP_BONUS:0.20,BUFF_TIME_MIN:30,FOCUS_TIMER_H:8,CLASS_TIMER_H:12,RAID_TIMER_H:7,HARD_VERSION_H:6,DAILY_GENERATE_HOUR:0,DAILY_DEADLINE_HOUR:23,MAX_FOCUS_PER_DAY:2,MAX_CLASS_PER_DAY:2};
 const dateKey=(d=new Date())=>d.toISOString().slice(0,10);const isoWeekKey=(d=new Date())=>{const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));const day=t.getUTCDay()||7;t.setUTCDate(t.getUTCDate()+4-day);const y0=new Date(Date.UTC(t.getUTCFullYear(),0,1));const wk=Math.ceil((((t-y0)/86400000)+1)/7);return `${t.getUTCFullYear()}-W${String(wk).padStart(2,'0')}`};
 return {on,emit,save,load,startTick,Config,dateKey,isoWeekKey};})();
 
@@ -344,4 +344,5 @@ const setZone=z=>State.set(s=>{s.profile.zone=z});return {save,load,setName,setC
   Core.startTick();Core.on('tick:1s',()=>{document.querySelectorAll('.mission__timer').forEach(el=>{const id=el.dataset.id;const m=State.get().missions.list.find(x=>x.id===id);if(m)el.textContent=U.hms(U.secondsLeft(m.endsAt))})});
   if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{})}
   UI.render();
-})(); 
+});
+})();
